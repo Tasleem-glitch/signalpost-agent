@@ -887,6 +887,17 @@ class WebsiteTests(unittest.TestCase):
     def test_priority_pages_stay_on_exact_site(self):
         soup = BeautifulSoup('<a href="/kontakt">Contact</a><a href="https://other.no/about">About</a><a href="/products">Products</a>', "html.parser")
         self.assertEqual(_priority_links("https://example.no/", soup), ["https://example.no/kontakt"])
+    def test_priority_pages_include_careers_jobs_and_news(self):
+        soup = BeautifulSoup(
+            '<a href="/careers">Careers</a><a href="/jobs">Jobs</a><a href="/news">News</a><a href="https://other.no/jobs">External Jobs</a>',
+            "html.parser",
+        )
+        links = _priority_links("https://example.no/", soup, limit=10)
+        self.assertIn("https://example.no/careers", links)
+        self.assertIn("https://example.no/jobs", links)
+        self.assertIn("https://example.no/news", links)
+        self.assertNotIn("https://other.no/jobs", links)
+    
 
     def test_js_shell_is_only_a_fallback_candidate(self):
         shell = BeautifulSoup('<html><script src="a.js"></script><script src="b.js"></script></html>', "html.parser")
