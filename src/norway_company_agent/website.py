@@ -31,8 +31,15 @@ SOCIAL_HOSTS = {
     "tiktok.com": "tiktok",
 }
 PRIORITY_TERMS = (
-    "om-oss", "om_oss", "about", "kontakt", "contact", "ledelse", "management",
-    "team", "people", "locations", "lokasjoner", "avdelinger", "butikker",
+    "om-oss", "om_oss", "about",
+    "kontakt", "contact",
+    "ledelse", "management", "team", "people",
+    "locations", "lokasjoner", "avdelinger", "butikker",
+    "karriere", "karrierer", "career", "careers",
+    "jobb", "jobber", "jobs",
+    "stilling", "stillinger", "ledig-stilling", "ledige-stillinger",
+    "vacancy", "vacancies", "recruitment", "rekruttering",
+    "work-with-us", "join-us",
     "news", "press", "aktuelt", "nyheter",
 )
 
